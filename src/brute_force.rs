@@ -1,4 +1,4 @@
-use std::{io::stdin, error::Error};
+use std::{io::stdin};
 use std::io;
 use std::thread;
 use std::sync::mpsc;
@@ -19,25 +19,24 @@ fn stall() {
     stdin().read_line(&mut input).unwrap();
 }
 
-pub(crate) fn main() -> Result<(), Box<dyn Error>> {
+pub(crate) fn main() -> bool{
 
     //getting input
     print!("Enter a number to check if it is prime: ");
     io::Write::flush(&mut io::stdout()).expect("flush failed!");
     let mut input = String::new();
-    stdin().read_line(&mut input)?;
-    let prime_check: i128 = input.trim().parse()?;
+    stdin().read_line(&mut input).expect("Failed to read line");
+    let prime_check: i128 = input.trim().parse().expect("Please type a number!");
 
     print!("Enter number of threads: ");
     io::Write::flush(&mut io::stdout()).expect("flush failed!");
     let mut t = String::new();
-    stdin().read_line(&mut t)?;
-    let t: i128 = t.trim().parse()?;
+    stdin().read_line(&mut t).expect("Failed to read line");
+    let t: i128 = t.trim().parse().expect("Please type a number!");
     let t = t + 1;
     let t = t;
 
     //prepping to start code
-    let mut flag = true;
     use std::time::Instant;
     println!("Starting calculation...");
     let now = Instant::now();
@@ -47,19 +46,19 @@ pub(crate) fn main() -> Result<(), Box<dyn Error>> {
         println!("{} is not a prime number",prime_check);
         let elapsed = now.elapsed();
         println!("Elapsed: {:.2?}", elapsed);
-        return Ok(());
+        return true;
     }
     if prime_check == 2 || prime_check == 3 {
         println!("{} is a prime number",prime_check);
         let elapsed = now.elapsed();
         println!("Elapsed: {:.2?}", elapsed);
-        return Ok(());
+        return true;
     }
     if prime_check % 2 == 0 || prime_check % 3 == 0 {
         println!("{} is a prime number", prime_check);
         let elapsed = now.elapsed();
         println!("Elapsed: {:.2?}", elapsed);
-        return Ok(());
+        return true;
     }
 
     //prepping to start threads
@@ -97,5 +96,5 @@ pub(crate) fn main() -> Result<(), Box<dyn Error>> {
         println!("Received: {}", received);
     }
     stall();
-    Ok(())
+    return true;
 }

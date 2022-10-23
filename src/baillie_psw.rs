@@ -38,7 +38,7 @@ fn fermat(n : i128) {
     }
 }
 
-pub(crate) fn main() {
+pub(crate) fn main() -> bool {
     print!("Enter a number to check if it is prime: ");
     io::Write::flush(&mut io::stdout()).expect("flush failed!");
     let mut input = String::new();
@@ -47,6 +47,6 @@ pub(crate) fn main() {
     let now = Instant::now();
     fermat(prime_check);
     let elapsed = now.elapsed();
-    println!("Elapsed: {:.2?}",elapsed)
-
+    println!("Elapsed: {:.2?}",elapsed);
+    return true;
 }

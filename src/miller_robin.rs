@@ -2,8 +2,8 @@ use std::{io::stdin};
 use std::io;
 use rand::{Rng};
 use std::time::Instant;
-use num::bigint::{BigUint, ToBigUint, BigInt, RandBigInt};
-use num::traits::cast::ToPrimitive;
+use num::bigint::{BigInt};
+
 
 //Miller Rabin Primality Test
 
@@ -48,7 +48,7 @@ fn miller_rabin(n :i128, i :i128) -> bool{
         let mut rng = rand::thread_rng();
         let a:i128  = 2 + rng.gen_range(0..n - 2);
         // compute x = a^d % n
-        let mut x = power(a, (n - 1), n);
+        let mut x = power(a, n - 1, n);
         // if x is 1 or n-1, continue to next iteration
         if x == BigInt::from(1) || x == &n - BigInt::from(1) {
             if ii == i -1 {
@@ -77,7 +77,7 @@ fn miller_rabin(n :i128, i :i128) -> bool{
     return false;
 }
 
-pub(crate) fn main(){
+pub(crate) fn main() -> bool {
     // check input for number to be checked and parse it
     print!("Enter a number to check if it is prime: ");
     io::Write::flush(&mut io::stdout()).expect("flush failed!");
@@ -96,8 +96,10 @@ pub(crate) fn main(){
     if miller_rabin(prime_check, iteration_check) {
         println!("Elapsed: {:.2?}", now.elapsed());
         println!("{} is {}% probably prime", prime_check, 100.0 - (0.25_f64).powf(iteration_check as f64) *100.0);
+        return true;
     } else {
         println!("{} is composite", prime_check);
         println!("Elapsed: {:.2?}", now.elapsed());
+        return true;
     }
 }
