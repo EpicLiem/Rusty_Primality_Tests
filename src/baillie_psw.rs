@@ -1,3 +1,8 @@
+use std::io;
+use std::io::stdin;
+use std::time::Instant;
+use rand::Rng;
+
 fn fermat(n : i128) {
 
     if n % 2 == 0 {
