@@ -86,7 +86,7 @@ pub(crate) fn main(){
     let prime_check: i128 = prime_input.trim().parse().expect("Please type a number!");
     // check input for number of iterations and parse it
     let mut iteration_input = String::new();
-    print!("Enter the number of iterations: ");
+    print!("Enter the number of iterations(the more you enter the better the probability): ");
     io::Write::flush(&mut io::stdout()).expect("flush failed!");
     stdin().read_line(&mut iteration_input).expect("Failed to read line");
     let iteration_check: i128 = iteration_input.trim().parse().expect("Please type a number!");
@@ -94,8 +94,8 @@ pub(crate) fn main(){
     let now = Instant::now();
     // run miller rabin test and print result
     if miller_rabin(prime_check, iteration_check) {
-        println!("{} is prime", prime_check);
         println!("Elapsed: {:.2?}", now.elapsed());
+        println!("{} is {}% probably prime", prime_check, 100.0 - (0.25_f64).powf(iteration_check as f64) *100.0);
     } else {
         println!("{} is composite", prime_check);
         println!("Elapsed: {:.2?}", now.elapsed());
