@@ -10,9 +10,9 @@ Install my-project with git clone then use cargo to build it
 
 ```bash
   git clone https://github.com/EpicLiem/Rusty_Primality_Tests.git
-  cd my-project
+  cd Rusty_Primality_Tests
   cargo b --release
-  ./targets/release/rusty_primality_tests
+  ./target/release/rusty_primality_tests 
 ```
 
 
