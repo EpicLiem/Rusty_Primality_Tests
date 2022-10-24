@@ -37,7 +37,7 @@ fn miller_rabin(n :i128, i :i128) -> bool{
         return false;
     }
     // find d such that n-1 = 2^d * r
-    let mut d = BigInt::from(n - 1);
+    let mut d = BigInt::from(n-1);
     while &d % 2 == BigInt::from(0) {
         d /= 2;
     }

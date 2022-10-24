@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/rusty_speedy_primes.iml" filepath="$PROJECT_DIR$/rusty_speedy_primes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/rusty_primality_tests.iml" filepath="$PROJECT_DIR$/rusty_primality_tests.iml" />
     </modules>
   </component>
 </project>
