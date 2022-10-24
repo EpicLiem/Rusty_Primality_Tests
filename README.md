@@ -12,7 +12,7 @@ Install my-project with git clone then use cargo to build it
   git clone https://github.com/EpicLiem/Rusty_Primality_Tests.git
   cd my-project
   cargo b --release
-  ./targets/release/Rusty_Primality_Tests
+  ./targets/release/rusty_primality_tests
 ```
 
 

@@ -1,5 +1,5 @@
 [package]
-name = "rusty_speedy_primes"
+name = "rusty_primality_tests"
 version = "0.1.0"
 edition = "2021"
 
